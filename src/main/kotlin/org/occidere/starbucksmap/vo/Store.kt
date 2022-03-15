@@ -35,7 +35,7 @@ data class Store(
     val location: String = "$lat,$lot",
     val createdAt: Long = System.currentTimeMillis()
 ) {
-    fun toJsonString(): String = JacksonUtils.OBJECT_MAPPER.writeValueAsString(this)
+    override fun toString(): String = JacksonUtils.OBJECT_MAPPER.writeValueAsString(this)
 }
 
 /*
