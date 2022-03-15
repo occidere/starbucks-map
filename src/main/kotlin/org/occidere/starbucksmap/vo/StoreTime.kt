@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
 import com.fasterxml.jackson.databind.annotation.JsonNaming
+import org.apache.commons.lang3.StringUtils
+import org.occidere.starbucksmap.utils.JacksonUtils
 
 /**
  * @author occidere
@@ -20,10 +22,13 @@ data class StoreTime(
     @JsonAlias("store_time_week")
     val week: Int, // 6
     @JsonAlias("store_time_week_str")
-    val weekStr: String, // FRI
+    val weekStr: String?, // FRI
     @JsonProperty("store_opentime")
-    val storeOpenTime: String // 0700-2100
-)
+    val storeOpenTime: String? // 0700-2100
+) {
+    fun isValid() = !StringUtils.isAnyBlank(weekStr, storeOpenTime)
+    override fun toString(): String = JacksonUtils.OBJECT_MAPPER.writeValueAsString(this)
+}
 
 /*
 {
