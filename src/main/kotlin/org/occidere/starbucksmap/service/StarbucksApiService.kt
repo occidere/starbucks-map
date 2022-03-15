@@ -31,7 +31,7 @@ class StarbucksApiService(private val webClient: WebClient) {
         ).retrieve()
         .blockingMonoGet()
 
-    fun getStoreTime(sBizCode: String): List<StoreTime> = webClient.post()
+    fun getStoreTimes(sBizCode: String): List<StoreTime> = webClient.post()
         .uri(storeTimeUri)
         .body(
             BodyInserters.fromFormData("in_biz_cd", sBizCode)
@@ -58,8 +58,8 @@ class StarbucksApiService(private val webClient: WebClient) {
             lat = store.lat,
             lot = store.lot,
             day = it.day,
-            weekStr = it.weekStr,
-            storeOpenTime = it.storeOpenTime
+            weekStr = it.weekStr ?: "",
+            storeOpenTime = it.storeOpenTime ?: ""
         )
     }
 
