@@ -40,8 +40,10 @@ class StarbucksStoreProcessor(
         measureTimeMillis {
             log.info("Starbucks API call started")
             starbucksStores = starbucksApiService.getStores(sido.code)
-                .flatMap {
-                    starbucksApiService.createStarbucksStores(it, starbucksApiService.getStoreTime(it.sBizCode))
+                .flatMap { store ->
+                    val validStoreTimes = starbucksApiService.getStoreTimes(store.sBizCode)
+                        .filter { it.isValid().apply { if (!this) log.warn("Invalid! Store: $store, StoreTime: $it") } }
+                    starbucksApiService.createStarbucksStores(store, validStoreTimes)
                 }.asSequence()
         }.let { log.info("Starbucks API call finished ($it ms)") }
         return starbucksStores
