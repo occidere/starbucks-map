@@ -28,7 +28,7 @@ dependencies {
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("org.apache.commons:commons-lang3:3.12.0")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.5")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testImplementation("org.springframework.batch:spring-batch-test:4.3.5")
 }
 
