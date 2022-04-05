@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.6.4"
+    id("org.springframework.boot") version "2.6.5"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
@@ -15,7 +15,7 @@ repositories {
     mavenCentral()
 }
 
-val springBootVersion = "2.6.4"
+val springBootVersion = "2.6.5"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
@@ -23,12 +23,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch:$springBootVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
     implementation("commons-io:commons-io:2.11.0")
     implementation("org.apache.commons:commons-collections4:4.4")
     implementation("org.apache.commons:commons-lang3:3.12.0")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.4")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.5")
     testImplementation("org.springframework.batch:spring-batch-test:4.3.5")
 }
 
